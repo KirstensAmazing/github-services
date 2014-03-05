@@ -6,10 +6,11 @@ descriptions can be found here: http://developer.github.com/v3/repos/hooks/
 Install Notes
 -------------
 
-1. **Auth Token** - One of your group's API tokens. See: http://www.hipchat.com/docs/api/auth
-2. **Room** - The full name of the room to send the message to. The room's room_id will also work.
-3. **Restrict to Branch** - List of branches to which will be inspected.
-4. **Color** - Optional background color for the message. Available options are: yellow, red, green, purple, gray, or random. Defaults to yellow.
+1. **Endpoint** - This is where your hipchat server is located. If not running hipchat_server use "api.hipchat.com"
+2. **Auth Token** - One of your group's API tokens. See: http://www.hipchat.com/docs/api/auth
+3. **Room** - The full name of the room to send the message to. The room's room_id will also work.
+4. **Restrict to Branch** - List of branches to which will be inspected.
+5. **Color** - Optional background color for the message. Available options are: yellow, red, green, purple, gray, or random. Defaults to yellow.
 
 Options
 1. **Notify** - Whether or not to notify room members.

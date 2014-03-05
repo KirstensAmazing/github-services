@@ -1,5 +1,5 @@
 class Service::HipChat < Service
-  string :auth_token, :room, :restrict_to_branch, :color
+  string :endpoint, :auth_token, :room, :restrict_to_branch, :color
   boolean :notify, :quiet_fork, :quiet_watch, :quiet_comments, :quiet_wiki
   white_list :room, :restrict_to_branch, :color
 
@@ -11,7 +11,7 @@ class Service::HipChat < Service
     # make sure we have what we need
     raise_config_error "Missing 'auth_token'" if data['auth_token'].to_s == ''
     raise_config_error "Missing 'room'" if data['room'].to_s == ''
-
+    raise_config_error "Missing 'endpoint'" if data['endpoint'].to_s == ''
     # push events can be restricted to certain branches
     if event.to_s == 'push'
       branch = payload['ref'].split('/').last
@@ -48,7 +48,7 @@ class Service::HipChat < Service
       if data['color'].present?
         params.merge!(:color => data['color'])
       end
-      res = http_post "https://api.hipchat.com/v1/webhooks/github", params
+      res = http_post "https://['endpoint']/v1/webhooks/github", params
       if res.status < 200 || res.status > 299
         raise_config_error
       end
